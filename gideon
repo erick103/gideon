@@ -1,0 +1,47 @@
+importar  o reconhecimento de fala  como  sr
+importar  pyttsx3
+importar  data e hora
+importar  wikipedia
+importar  pywhatkit
+
+
+áudio  =  Sr. _ Reconhecedor ()
+maquina  =  pyttsx3 . inicializar ()
+
+def  executa_comando ():
+    tente :
+        com  sr . Microfone () como  fonte :
+            print ( 'Ouvindo..' )
+            voz  =  áudio . ouvir ( fonte )
+            comando  =  áudio . reconhece_google ( voz , idioma = 'pt-BR' )
+            comando  =  comando . inferior ()
+            se  'tina'  no  comando :
+                comando  =  comando . substitua ( 'gideon` , '')
+                maquina . dizer ( comando )
+                maquina . executar e esperar ()
+
+    exceto :
+        print ( 'Microfone não está ok' )
+
+     comando de retorno
+
+def  comando_voz_usuario ():
+    comando  =  executa_comando ()
+    se  'horas'  no  comando :
+        hora  =  datahora . datahora . agora (). strftime ( '%H:%M' )
+        maquina . dizer ( 'Agora são'  +  hora )
+        maquina . executar e esperar ()
+    elif  'procure por'  no  comando :
+        procurar  =  comando . replace ( 'procurar por' , '' )
+        wikipedia . set_lang ( 'pt' )
+        resultado = google .  sumario
+        maquina . dizer ( resultado )
+        maquina . executar e esperar ()
+    elif  'toque'  no  comando :
+        musica  =  comando . replace ( 'toque' , '' )
+        resultado  =  pywhatkit . playonyt ( música )
+        maquina . diga ( 'Tocando música' )
+        maquina . executar e esperar ()
+
+
+comando_voz_usuário ()
